@@ -12,6 +12,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *
  * @property string name
  * @property string description
+ * @property mixed caffeine
+ * @property mixed id
  */
 class DrinkResource extends JsonResource
 {
@@ -27,6 +29,7 @@ class DrinkResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'caffeine' => $this->caffeine,
         ];
     }
 }

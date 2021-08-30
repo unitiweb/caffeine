@@ -16,9 +16,21 @@
                             Drink
                         </label>
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
-                            <select id="drink-id" name="drinkId" v-model="drinkId" class="mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                <option v-for="drink in drinks" :value="drink.id" :selected="drinkId === drink.id">{{ drink.name }}</option>
-                            </select>
+<!--                            <select id="drink-id" name="drinkId" v-model="drinkId" class="mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">-->
+<!--                                <option v-for="drink in drinks" :value="drink.id" :selected="drink.id === drinkId">{{ drink.name }}</option>-->
+<!--                            </select>-->
+                            <fieldset class="space-y-5">
+                                <legend class="sr-only">Drinks</legend>
+                                <div v-for="drink in drinks" class="relative flex items-start">
+                                    <div class="flex items-center h-5">
+                                        <input id="drinkId" aria-describedby="drink-id-description" v-model="drinkId" name="drinkId" :value="drink.id" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                    </div>
+                                    <div class="ml-3 text-sm">
+                                        <label for="drink-id-description" class="font-medium text-gray-700">{{ drink.name }}</label>
+                                        <p id="drink-id-description" class="text-gray-500">{{ drink.description }}</p>
+                                    </div>
+                                </div>
+                            </fieldset>
                             <p v-if="errors.drinkId" class="mt-2 text-sm text-red-600" id="email-error">{{ errors.drinkId }}</p>
                         </div>
                     </div>
@@ -51,6 +63,10 @@
 <script>
     export default {
         props: {
+            drinks: {
+                type: Array,
+                default: () => []
+            },
             consumed: {
                 type: Object,
                 default: () => null
@@ -63,7 +79,6 @@
                     amount: null
                 },
                 populate: false,
-                drinks: [],
                 id: null,
                 drinkId: null,
                 amount: 1
@@ -73,6 +88,7 @@
         methods: {
             async save () {
                 try {
+                    console.log(this.id, this.drinkId, this.amount)
                     this.errors.drinkId = null
                     this.errors.amount = null
                     if (this.id) {
@@ -80,27 +96,22 @@
                     } else {
                         await this.$http.addConsumed(this.drinkId, this.amount)
                     }
-                    await this.$emit('cancel')
+                    await this.$emit('refresh')
                 } catch (error) {
                     if (error.status === 422) {
                         if (error.data.errors['drinkId']) {
                             this.errors.drinkId = error.data.errors['drinkId'][0]
                         }
                         if (error.data.errors['amount']) {
-                            this.errors.drinkId = error.data.errors['amount'][0]
+                            this.errors.amount = error.data.errors['amount'][0]
                         }
                     }
                     console.log('save error', error)
                 }
             },
 
-            async loadDrinks () {
-                const drinks = await this.$http.getDrinks()
-                this.drinks = drinks.data
-            },
-
             cancel () {
-                this.dink = null
+                this.drink = null
                 this.amount = 1
                 this.$emit('cancel')
             },
@@ -119,7 +130,6 @@
         },
 
         async mounted () {
-            await this.loadDrinks()
             await this.populateDrinks()
             if (this.consumed) {
                 this.id = this.consumed.id

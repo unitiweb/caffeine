@@ -18,6 +18,7 @@ class CreateDrinksTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name', 30);
             $table->string('description', 128);
+            $table->integer('caffeine');
             $table->integer('order');
             $table->timestamps();
 

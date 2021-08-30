@@ -3,7 +3,7 @@
     <div class="flex flex-col">
         <slot />
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 align-middle inline-block sm:px-6 lg:px-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
@@ -22,7 +22,7 @@
                         <tbody>
                         <tr v-for="cons in consumed" class="bg-white">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {{ cons.drink.name }}
+                                {{ cons.drink.name }} ({{ cons.amount * cons.drink.caffeine }}mg)
                                 <div class="text-sm font-thin">{{ cons.drink.description }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
@@ -47,35 +47,22 @@
 
 <script>
     export default {
-        data () {
-            return {
-                consumed: []
+        props: {
+            consumed: {
+                type: Array,
+                default: () => []
             }
         },
 
         methods: {
-            async loadConsumed () {
-                try {
-                    const consumed = await this.$http.getConsumed()
-                    this.consumed = consumed.data
-                } catch (error) {
-                    console.log('loadConsumed error', error)
-                }
-            },
 
             edit (consumed) {
                 this.$emit('edit', consumed)
             },
 
             async remove (consumed) {
-                await this.$http.removeConsumed(consumed.id)
-                await this.loadConsumed()
+                this.$emit('remove', consumed)
             }
-        },
-
-        async mounted () {
-            await this.loadConsumed()
-            console.log('this.consumed', this.consumed)
         }
     }
 </script>

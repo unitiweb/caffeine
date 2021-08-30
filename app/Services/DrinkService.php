@@ -67,26 +67,31 @@ class DrinkService
                 'user_id' => $user->id,
                 'name' => 'Monster Ultra Sunrise',
                 'description' => 'A refreshing orange beverage that has 75mg of caffeine per serving. Every can has two servings.',
+                'caffeine' => 75,
                 'order' => 1,
             ], [
                 'user_id' => $user->id,
                 'name' => 'Black Coffee',
                 'description' => 'The classic, the average 8oz. serving of black coffee has 95mg of caffeine.',
+                'caffeine' => 95,
                 'order' => 2,
             ], [
                 'user_id' => $user->id,
                 'name' => 'Americano',
                 'description' => 'Sometimes you need to water it down a bit... and in comes the americano with an average of 77mg. of caffeine per serving.',
+                'caffeine' => 77,
                 'order' => 3,
             ], [
                 'user_id' => $user->id,
                 'name' => 'Sugar free NOS',
                 'description' => 'Another orange delight without the sugar. It has 130 mg. per serving and each can has two servings.',
+                'caffeine' => 130,
                 'order' => 4,
             ], [
                 'user_id' => $user->id,
                 'name' => '5 Hour Energy',
                 'description' => 'And amazing shot of get up and go! Each 2 fl. oz. container has 200mg of caffeine to get you going.',
+                'caffeine' => 200,
                 'order' => 5,
             ]
         ];

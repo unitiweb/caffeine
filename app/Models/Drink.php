@@ -18,6 +18,7 @@ class Drink extends Model
         'user_id',
         'name',
         'description',
+        'caffeine',
         'order',
     ];
 }

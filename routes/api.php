@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ConsumedController;
 use App\Http\Controllers\Api\DrinkController;
+use App\Http\Controllers\Api\StatsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +31,6 @@ Route::apiResource('drinks', DrinkController::class);
 Route::post('/drinks/populate', [DrinkController::class, 'populate'])->name('drinks.populate');
 
 Route::apiResource('consumed', ConsumedController::class);
+Route::apiResource('stats', StatsController::class)->only('index');
 
 

@@ -33,6 +33,10 @@ const context = {
 
     removeConsumed: (id) => {
         return request('delete', ['consumed', id])
+    },
+
+    getConsumedStats: () => {
+        return request('get', ['stats'])
     }
 }
 
