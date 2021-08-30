@@ -3,6 +3,7 @@
 namespace App\Facades\Services;
 
 use App\Models\Drink;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @method static Drink addDrink(string $name, string $description, int $order = null)
  * @method static void updateDrink(Drink $drink, array $data)
+ * @method static Collection populateDefaults()
  */
 class DrinkService extends Facade
 {

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Drink;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -55,5 +56,47 @@ class DrinkService
         }
 
         $drink->save();
+    }
+
+    public function populateDefaults(): Collection
+    {
+        $user = Auth::user();
+
+        $data = [
+            [
+                'user_id' => $user->id,
+                'name' => 'Monster Ultra Sunrise',
+                'description' => 'A refreshing orange beverage that has 75mg of caffeine per serving. Every can has two servings.',
+                'order' => 1,
+            ], [
+                'user_id' => $user->id,
+                'name' => 'Black Coffee',
+                'description' => 'The classic, the average 8oz. serving of black coffee has 95mg of caffeine.',
+                'order' => 2,
+            ], [
+                'user_id' => $user->id,
+                'name' => 'Americano',
+                'description' => 'Sometimes you need to water it down a bit... and in comes the americano with an average of 77mg. of caffeine per serving.',
+                'order' => 3,
+            ], [
+                'user_id' => $user->id,
+                'name' => 'Sugar free NOS',
+                'description' => 'Another orange delight without the sugar. It has 130 mg. per serving and each can has two servings.',
+                'order' => 4,
+            ], [
+                'user_id' => $user->id,
+                'name' => '5 Hour Energy',
+                'description' => 'And amazing shot of get up and go! Each 2 fl. oz. container has 200mg of caffeine to get you going.',
+                'order' => 5,
+            ]
+        ];
+
+        if (Drink::where('user_id', $user->id)->count() === 0) {
+            foreach ($data as $drink) {
+                Drink::create($drink);
+            }
+        }
+
+        return Drink::where('user_id', $user->id)->get();
     }
 }

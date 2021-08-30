@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any}', function () {
+    $env = [
+        'VUE_APP_API_HTTP' => config('app.url') . '/api'
+    ];
+    return view('home', ['env' => $env]);
+})->where('any', '.*');

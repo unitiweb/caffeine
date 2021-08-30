@@ -6,9 +6,17 @@ window._ = require('lodash');
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
+// window.axios = require('axios');
+//
+// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+try {
+    window.Popper = require('popper.js').default
+    window.$ = window.jQuery = require('jquery')
+
+    require('bootstrap')
+} catch (e) {}
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

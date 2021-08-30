@@ -27,6 +27,8 @@ Route::group([
 });
 
 Route::apiResource('drinks', DrinkController::class);
+Route::post('/drinks/populate', [DrinkController::class, 'populate'])->name('drinks.populate');
+
 Route::apiResource('consumed', ConsumedController::class);
 
 

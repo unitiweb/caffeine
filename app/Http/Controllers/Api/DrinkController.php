@@ -74,6 +74,17 @@ class DrinkController extends ApiController
     }
 
     /**
+     * Populate the standard drinks for the logged in user
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function populate(): AnonymousResourceCollection
+    {
+        $drinks = DrinkService::populateDefaults();
+        return DrinkResource::collection($drinks);
+    }
+
+    /**
      * Delete the given drink item
      *
      * @param Drink $drink
