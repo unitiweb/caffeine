@@ -5,18 +5,17 @@
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <div class="sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-                            <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" aria-current="page">
+                            <button class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" aria-current="page">
                                 Dashboard
-                            </a>
-                            <a href="#" @click="logout" class="text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium" aria-current="page">
+                            </button>
+                            <button @click="logout" class="text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium" aria-current="page">
                                 Logout
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
-
         <div class="py-10">
             <main>
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

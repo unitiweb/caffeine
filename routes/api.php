@@ -23,7 +23,6 @@ Route::group([
     'excluded_middleware' => ['auth:api'],
 ], function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/refresh', [AuthController::class, 'refresh'])->name('refresh');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
 

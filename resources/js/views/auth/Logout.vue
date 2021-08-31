@@ -1,5 +1,5 @@
 <template>
-    <h3>You are being logged out</h3>
+    <h3 class="p-4 text-center">You are being logged out</h3>
 </template>
 
 <script>

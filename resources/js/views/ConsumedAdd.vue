@@ -16,9 +16,6 @@
                             Drink
                         </label>
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
-<!--                            <select id="drink-id" name="drinkId" v-model="drinkId" class="mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">-->
-<!--                                <option v-for="drink in drinks" :value="drink.id" :selected="drink.id === drinkId">{{ drink.name }}</option>-->
-<!--                            </select>-->
                             <fieldset class="space-y-5">
                                 <legend class="sr-only">Drinks</legend>
                                 <div v-for="drink in drinks" class="relative flex items-start">
@@ -34,7 +31,6 @@
                             <p v-if="errors.drinkId" class="mt-2 text-sm text-red-600" id="email-error">{{ errors.drinkId }}</p>
                         </div>
                     </div>
-
                     <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                         <label for="last-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
                             Amount

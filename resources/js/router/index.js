@@ -6,10 +6,6 @@ import VueRouter from 'vue-router'
 import VueRouterPrefetch from 'vue-router-prefetch'
 
 /**
- * Other needed imports
- */
-
-/**
  * Load the layout components
  */
 import BaseLayout from '@/components/layouts/BaseLayout';
@@ -17,16 +13,16 @@ import AuthLayout from "@/components/layouts/AuthLayout";
 import DashboardLayout from "@/components/layouts/DashboardLayout";
 
 /**
- * Load the auth components
+ * Page components
  */
 import Login from '@/views/auth/Login';
 import Logout from '@/views/auth/Logout';
+import Dashboard from "@/views/Dashboard";
+
 /**
  * Middleware
  */
-
 import Authentication from '@/router/middleware/authentication'
-import Dashboard from "@/views/Dashboard";
 
 /**
  * Add the plugins to the Vue instance
@@ -60,23 +56,6 @@ const routes = [
                         name: 'logout',
                         component: Logout
                     },
-                    // {
-        //                 //     path: 'register',
-        //                 //     name: 'register',
-        //                 //     component: Register
-        //                 // }, {
-        //                 //     path: 'verify-email',
-        //                 //     name: 'verify-email',
-        //                 //     component: VerifyEmail
-        //                 // }, {
-        //                 //     path: 'forgot-password',
-        //                 //     name: 'forgot-password',
-        //                 //     component: ForgotPassword
-        //                 // }, {
-        //                 //     path: 'forgot-password-validate',
-        //                 //     name: 'forgot-password-validate',
-        //                 //     component: ForgotPasswordValidate
-        //             }
                 ]
             }, {
                 path: 'dashboard',
@@ -90,15 +69,6 @@ const routes = [
                         name: 'consumed',
                         component: Dashboard
                     },
-                    // {
-            //             path: 'profile',
-            //             name: 'profile',
-            //             component: Profile
-            //         }, {
-            //             path: 'banks',
-            //             name: 'banks',
-            //             component: Banks
-            //         }
                 ]
             }
         ]

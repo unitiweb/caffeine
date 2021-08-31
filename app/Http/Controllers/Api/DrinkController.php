@@ -26,6 +26,7 @@ class DrinkController extends ApiController
     public function index(): AnonymousResourceCollection
     {
         $user = Auth::user();
+
         return DrinkResource::collection($user->drinks);
     }
 

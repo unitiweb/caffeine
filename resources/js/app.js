@@ -1,5 +1,4 @@
 require('@/bootstrap');
-import '@/pollyfills'
 
 window.Vue = require('vue');
 import App from '@/App.vue'

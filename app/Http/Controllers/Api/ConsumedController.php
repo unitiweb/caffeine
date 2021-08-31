@@ -6,12 +6,9 @@ use App\Facades\Services\ConsumedService;
 use App\Http\Requests\ConsumedStoreRequest;
 use App\Http\Requests\ConsumedUpdateRequest;
 use App\Http\Resources\ConsumedResource;
-use App\Http\Resources\DrinkResource;
 use App\Models\Consumed;
 use App\Models\Drink;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -44,6 +41,7 @@ class ConsumedController extends ApiController
      */
     public function show(Consumed $consumed): ConsumedResource
     {
+        Gate::authorize('consumed', $consumed);
         return new ConsumedResource($consumed);
     }
 
@@ -91,6 +89,7 @@ class ConsumedController extends ApiController
     {
         Gate::authorize('consumed', $consumed);
         $consumed->delete();
+
         return response()->noContent();
     }
 }

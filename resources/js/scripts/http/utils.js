@@ -2,14 +2,6 @@ import config from '@/config';
 import store from '@/store';
 import router from '@/router';
 import axios from 'axios';
-// import sha256Util from '@/scripts/helpers/sha256';
-
-/**
- * Sha256 utility
- *
- * @return sha256
- */
-// export const sha256 = sha256Util
 
 /**
  * Create the request url

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Facades\Services\AuthService;
 use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RefreshRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\TokenResource;
 use App\Http\Resources\UserResource;
@@ -33,20 +32,6 @@ class AuthController extends ApiController
         return (new UserResource($user))->additional([
             'token' => new TokenResource($token),
         ]);
-    }
-
-    /**
-     * Exchange an existing api token for a new one
-     *
-     * @param RefreshRequest $request
-     * @return AuthResource
-     */
-    public function refresh(RefreshRequest $request): AuthResource
-    {
-        $data = $request->validated();
-        $token = AuthService::refreshApiToken($data['uid'], $data['token']);
-
-        return new AuthResource($token);
     }
 
     /**
