@@ -6,12 +6,15 @@ This is a sample demo site that can calculate how much caffeine you drank and ho
 
 This demo uses docker to run locally. It will spin up the main laravel container, a MySQL database, and PHPMyAdmin to view the database. The utility `sail` is used. See Laravel's website for more info.
 
+**NOTE** If you `sail` commands are working you may not have an alias setup, so you can substitute it with `./vendor/bin/sail`.
+
 1. Clone this repo: `git clone git@github.com:unitiweb/caffeine.git`
 1. Run command `cd caffeine`
 1. Copy the env example `cp .env.example .env`
 1. Install composer dependencies `composer install`
 1. Run command `sail up -d`
 1. Migrate the database `sail artisan migrate`
+1. Seed the database `sail artisan db:seed`
 1. Install npm dependencies `sail npm install`
 
 Other helpful commands
@@ -22,7 +25,7 @@ Other helpful commands
 sail down
 ```
 
-**See Services**
+**See Services Status**
 
 ```shell
 sail ps

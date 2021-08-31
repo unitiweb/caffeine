@@ -66,7 +66,7 @@
         data () {
             return {
                 error: null,
-                email: 'dave@unitiweb.com',
+                email: 'demo@mini.me',
                 password: 'Testing01'
             }
         },
