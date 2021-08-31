@@ -2,6 +2,10 @@
 
 This is a sample demo site that can calculate how much caffeine you drank and how much more can you drink while staying at a safe level.
 
+## View the Online Version
+
+You can see this demo in action by visiting: `https://caffeine.unitiweb.com`
+
 ## Setup
 
 This demo uses docker to run locally. It will spin up the main laravel container, a MySQL database, and PHPMyAdmin to view the database. The utility `sail` is used. See Laravel's website for more info.
