@@ -15,7 +15,11 @@ This demo uses docker to run locally. It will spin up the main laravel container
 1. Run command `sail up -d`
 1. Migrate the database `sail artisan migrate`
 1. Seed the database `sail artisan db:seed`
-1. Install npm dependencies `sail npm install`
+   
+The website is now up. Here's how you can view it:
+
+1. Visit the website at `http://127.0.0.1:8080`
+1. Visit PHPMyAdmin at `http://127.0.0.1:8081`
 
 Other helpful commands
 

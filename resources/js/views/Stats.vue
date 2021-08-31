@@ -6,7 +6,7 @@
                     Caffeine Allowed
                 </dt>
                 <dd class="mt-1 text-3xl font-semibold text-gray-900">
-                    {{ stats.max }}
+                    {{ stats.max }}mg
                 </dd>
             </div>
             <div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
@@ -14,7 +14,7 @@
                     Amount Consumed
                 </dt>
                 <dd class="mt-1 text-3xl font-semibold text-gray-900">
-                    {{ stats.total }}
+                    {{ stats.total }}mg
                 </dd>
             </div>
             <div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
@@ -22,7 +22,7 @@
                     Still Can Consume
                 </dt>
                 <dd class="mt-1 text-3xl font-semibold text-gray-900">
-                    {{ stats.left }}
+                    {{ stats.left }}mg
                 </dd>
             </div>
         </dl>

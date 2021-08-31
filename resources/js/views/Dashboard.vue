@@ -1,28 +1,31 @@
 <template>
     <div>
+
+        <dashboard-header :view="view" @add="view = 'add'"></dashboard-header>
         <div v-if="view === 'add'">
             <consumed-add :drinks="drinks" :consumed="modify" @cancel="cancelForm" @refresh="refresh"></consumed-add>
         </div>
         <div v-else>
-            <div class="p-2">
-                <h3 class="mb-4">Drinks Consumed</h3>
-                <button @click="view = 'add'" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Add
-                </button>
-            </div>
+<!--            <div class="p-2">-->
+<!--                <button @click="view = 'add'" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-->
+<!--                    Add-->
+<!--                </button>-->
+<!--            </div>-->
+            <stats :stats="stats" class="mb-4"></stats>
             <consumed-data :consumed="consumed" @edit="editConsumed" @remove="removeConsumed"></consumed-data>
-            <stats :stats="stats"></stats>
         </div>
     </div>
 </template>
 
 <script>
+    import DashboardHeader from '@/views/DashboardHeader'
     import ConsumedData from '@/views/ConsumedData'
     import Stats from '@/views/Stats'
     import ConsumedAdd from '@/views/ConsumedAdd'
 
     export default {
         components: {
+            DashboardHeader,
             ConsumedData,
             Stats,
             ConsumedAdd
