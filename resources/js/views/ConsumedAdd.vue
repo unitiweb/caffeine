@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-            <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+        <div class="space-y-8 divide-y divide-gray-200 space-y-5">
+            <div class="pt-8 space-y-6 pt-10 space-y-5">
                 <div>
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
                         Add Consumed
@@ -10,33 +10,39 @@
                         When you've consumed a drink you can enter it here
                     </p>
                 </div>
-                <div class="space-y-6 sm:space-y-5">
-                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="drink-id" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                <div class="space-y-6 space-y-5">
+                    <div class="grid grid-cols-3 gap-4 items-start border-t border-gray-200 pt-5">
+                        <label for="drink-id" class="block text-sm font-medium text-gray-700 mt-px pt-2">
                             Drink
                         </label>
-                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="mt-1 mt-0 col-span-2">
                             <fieldset class="space-y-5">
                                 <legend class="sr-only">Drinks</legend>
-                                <div v-for="drink in drinks" class="relative flex items-start">
+                                <div v-if="consumed" class="relative flex items-start">
+                                    <div class="ml-3 text-sm">
+                                        <label for="drink-id-description-edit" class="font-medium text-gray-700">{{ consumed.drink.name }}</label>
+                                        <p id="drink-id-description-edit" class="text-gray-500">{{ consumed.drink.description }}</p>
+                                    </div>
+                                </div>
+                                <div v-else v-for="drink in drinks" class="relative flex items-start">
                                     <div class="flex items-center h-5">
-                                        <input id="drinkId" aria-describedby="drink-id-description" v-model="drinkId" name="drinkId" :value="drink.id" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                        <input v-model="drinkId" :value="drink.id" aria-checked="true" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                     </div>
                                     <div class="ml-3 text-sm">
-                                        <label for="drink-id-description" class="font-medium text-gray-700">{{ drink.name }}</label>
-                                        <p id="drink-id-description" class="text-gray-500">{{ drink.description }}</p>
+                                        <label :for="`drink-id-description-${drink.id}`" class="font-medium text-gray-700">{{ drink.name }}</label>
+                                        <p :id="`drink-id-description-${drink.id}`" class="text-gray-500">{{ drink.description }}</p>
                                     </div>
                                 </div>
                             </fieldset>
                             <p v-if="errors.drinkId" class="mt-2 text-sm text-red-600" id="email-error">{{ errors.drinkId }}</p>
                         </div>
                     </div>
-                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="last-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                    <div class="grid grid-cols-3 gap-4 items-start border-t border-gray-200 pt-5">
+                        <label for="last-name" class="block text-sm font-medium text-gray-700 mt-px pt-2">
                             Amount
                         </label>
-                        <div class="mt-1 sm:mt-0 sm:col-span-2">
-                            <input type="text" name="last-name" v-model="amount" id="last-name" autocomplete="family-name" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <div class="mt-1 mt-0 col-span-2">
+                            <input type="text" name="last-name" v-model="amount" id="last-name" autocomplete="family-name" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 max-w-xs text-sm border-gray-300 rounded-md">
                             <p v-if="errors.amount" class="mt-2 text-sm text-red-600" id="email-error">{{ errors.amount }}</p>
                         </div>
                     </div>
