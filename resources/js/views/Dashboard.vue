@@ -2,7 +2,7 @@
     <div>
         <dashboard-header :view="view" @add="view = 'add'"></dashboard-header>
         <div v-if="view === 'add'">
-            <consumed-add :drinks="drinks" :consumed="modify" @cancel="cancelForm" @refresh="refresh"></consumed-add>
+            <consumed-add :stats="stats" :drinks="drinks" :consumed="modify" @cancel="cancelForm" @refresh="refresh"></consumed-add>
         </div>
         <div v-else>
             <stats :stats="stats" :drinks="drinks" class="mb-4"></stats>

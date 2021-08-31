@@ -32,7 +32,7 @@
                 <li v-for="drink in allowed" class="col-span-1 flex shadow-sm rounded-md">
                     <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-l-md truncate">
                         <div class="flex-1 px-4 py-2 text-sm truncate">
-                            <a href="#" class="text-gray-900 font-medium hover:text-gray-600">{{ drink.name }}</a>
+                            <div class="text-gray-900 font-medium hover:text-gray-600">{{ drink.name }}</div>
                         </div>
                     </div>
                     <div class="flex-shrink-0 flex items-center justify-center w-16 bg-blue-600 text-white text-sm font-medium rounded-r-md">
@@ -44,7 +44,7 @@
                 <li class="col-span-1 flex shadow-sm rounded-md">
                     <div class="flex-1 flex items-center justify-between border border-pink-300 bg-pink-100 rounded-md truncate">
                         <div class="flex-1 px-4 py-2 text-sm truncate">
-                            <a href="#" class="text-gray-900 font-medium hover:text-gray-600">You've had enough!</a>
+                            <div class="text-gray-900 font-medium hover:text-gray-600">You've had enough!</div>
                         </div>
                     </div>
                 </li>
