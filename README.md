@@ -8,7 +8,7 @@ This demo uses docker to run locally. It will spin up the main laravel container
 
 1. Clone this repo: `git clone git@github.com:unitiweb/caffeine.git`
 1. Run command `cd caffeine`
-1. Copy `.env.example` to `.env` (no need to make any changes here)
+1. Copy the env example `cp .env.example .env`
 1. Install composer dependencies `composer install`
 1. Run command `sail up -d`
 1. Migrate the database `sail artisan migrate`
